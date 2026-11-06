@@ -1,0 +1,35 @@
+/* Before/after gallery module. */
+.gallery-sec { background: #fff; }
+.gallery {
+  margin-top: 40px;
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 1fr;
+}
+.ba { display: grid; gap: 8px; grid-template-columns: 1fr 1fr; }
+.gallery figure { position: relative; margin: 0; }
+.gallery img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius);
+  background: #cfe8ef;
+}
+.gallery figcaption {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 2px 12px;
+  border-radius: 999px;
+  background: var(--deep);
+  color: #fff;
+  font-size: .85rem;
+  font-weight: 700;
+}
+.gallery figcaption.after { background: var(--sun); color: #2a1d00; }
+@media (min-width: 860px) {
+  .gallery { grid-template-columns: repeat(3, 1fr); }
+  .ba { grid-template-columns: 1fr; }
+  .gallery img { aspect-ratio: 4 / 3; }
+}
