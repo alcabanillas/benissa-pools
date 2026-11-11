@@ -13,7 +13,7 @@
   if (reduced || !('IntersectionObserver' in window)) return;
 
   var targets = document.querySelectorAll(
-    'section:not(.hero) h2, .section-lead, .intro-grid img, .for-whom, .service, .ba, .steps li, .towns li, .faq details, .contact-links, #contact form'
+    'section:not(.hero) h2, .section-lead, .intro-grid img, .for-whom, .service, .service-band, .ba, .steps li, .towns li, .faq details, .contact-links, #contact form'
   );
 
   var observer = new IntersectionObserver(function (entries) {

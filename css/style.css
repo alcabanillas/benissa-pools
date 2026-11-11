@@ -191,29 +191,53 @@ h3 { letter-spacing: -.015em; line-height: 1.25; }
 
 .services-sec { background: var(--tile); }
 .services { display: grid; gap: 18px; grid-template-columns: 1fr; margin-top: 36px; }
-@media (min-width: 620px) { .services { grid-template-columns: 1fr 1fr; } }
-@media (min-width: 1020px) { .services { grid-template-columns: repeat(4, 1fr); } }
+/* 1 → 3 columns, no 2-column step (3 cards would leave an orphan). 720px keeps iPad mini portrait in 3 columns. */
+@media (min-width: 720px) { .services { grid-template-columns: repeat(3, 1fr); } }
 .service { display: flex; flex-direction: column; overflow: clip; border-radius: var(--radius); background: #fff; border: 1px solid var(--line); }
 .service img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
 .service h3 { margin: 20px 22px 8px; font-size: 1.2rem; color: var(--deep); }
 .service p { margin: 0 22px 24px; color: var(--muted); font-size: 1rem; }
-.service-dark { background: var(--deep); border-color: var(--deep); justify-content: flex-end; }
-.service-dark h3 { color: #fff; }
-.service-dark p { color: #cfe6ee; }
-.service-dark .btn { margin: 0 22px 22px; }
+.service-band {
+  display: grid;
+  gap: 20px;
+  align-items: center;
+  margin-top: 18px;
+  padding: 26px 28px;
+  border-radius: var(--radius);
+  background: var(--deep);
+}
+.service-band h3 { margin: 0 0 6px; font-size: 1.3rem; color: #fff; }
+.service-band p { margin: 0; color: #cfe6ee; max-width: 36em; }
+.service-band .btn { justify-self: start; }
+@media (min-width: 760px) {
+  .service-band { grid-template-columns: 1fr auto; gap: 40px; padding: 30px 36px; }
+}
 
-.process-sec { background: var(--tile); }
+.process-sec { background: var(--deep); }
+.process-sec h2 { color: #fff; }
 .steps { display: grid; gap: 28px; margin: 36px 0 0; padding: 0; list-style: none; counter-reset: step; }
-.steps li { counter-increment: step; padding-top: 20px; border-top: 2px solid var(--water); }
-.steps li::before { content: counter(step); font-size: 2rem; font-weight: 800; color: var(--water); line-height: 1; }
-.steps h3 { margin: 12px 0 6px; font-size: 1.25rem; color: var(--deep); }
-.steps p { margin: 0; color: var(--muted); }
+.steps li { counter-increment: step; padding-top: 22px; border-top: 1px solid rgba(255, 255, 255, .28); }
+.steps li::before { content: counter(step); font-size: clamp(3.2rem, 6vw, 4.6rem); font-weight: 800; letter-spacing: -.04em; color: var(--aqua); line-height: 1; }
+.steps h3 { margin: 14px 0 6px; font-size: 1.3rem; color: #fff; }
+.steps p { margin: 0; color: #cfe6ee; }
 @media (min-width: 760px) { .steps { grid-template-columns: repeat(3, 1fr); gap: 40px; } }
 
-.area-grid { display: grid; gap: 28px; align-items: center; }
-.towns { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
-.towns li { padding: 10px 20px; border-radius: 10px; background: var(--mist); color: var(--deep); font-weight: 700; }
-@media (min-width: 860px) { .area-grid { grid-template-columns: 1fr 1fr; gap: 72px; } }
+.area-grid { display: grid; gap: 32px; }
+.towns { display: grid; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.towns li {
+  padding-block: 14px;
+  border-bottom: 1px solid var(--line);
+  font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.1;
+  color: var(--deep);
+}
+@media (min-width: 860px) {
+  .towns { grid-template-columns: repeat(5, 1fr); border-top: 0; }
+  .towns li { padding: 6px 0 6px 22px; border-bottom: 0; border-left: 1px solid var(--line); }
+  .towns li:first-child { padding-left: 0; border-left: 0; }
+}
 
 .faq-sec { background: var(--tile); }
 .faq-grid { display: grid; gap: 24px; }
